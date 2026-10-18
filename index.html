@@ -1,984 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>love letter ni duduy</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>love letter ni duduy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#fff0f3;--bg2:#ffd6e0;--bg3:#ffb3c6;
+  --card:rgba(255,255,255,.78);--card-edge:rgba(255,160,185,.7);
+  --ink:#5e1a2c;--accent:#b3002d;--accent2:#e6395f;--soft:#ff9eb5;--pill:rgba(255,235,240,.75);
+  --btn-text:#fff;--no-bg:#fff;--shadow:rgba(200,40,80,.35);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg1:#2a0a14;--bg2:#3d0f1e;--bg3:#5a1230;
+    --card:rgba(50,16,30,.78);--card-edge:rgba(255,120,160,.45);
+    --ink:#ffe3ea;--accent:#ff8fab;--accent2:#ff4d6d;--soft:#ff7a95;--pill:rgba(90,25,50,.6);
+    --btn-text:#fff;--no-bg:#3d0f1e;--shadow:rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg1:#2a0a14;--bg2:#3d0f1e;--bg3:#5a1230;--card:rgba(50,16,30,.78);--card-edge:rgba(255,120,160,.45);
+  --ink:#ffe3ea;--accent:#ff8fab;--accent2:#ff4d6d;--soft:#ff7a95;--pill:rgba(90,25,50,.6);--no-bg:#3d0f1e;--shadow:rgba(0,0,0,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  min-height:100dvh;background:linear-gradient(150deg,var(--bg1),var(--bg2) 45%,var(--bg3));
+  background-attachment:fixed;color:var(--ink);
+  font-family:'Nunito','Segoe UI',system-ui,sans-serif;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(12px,3vw,32px);overflow-x:hidden;
+}
+#hearts{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
+.card{
+  position:relative;z-index:10;width:100%;max-width:620px;margin:auto;
+  background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1.5px solid var(--card-edge);border-radius:36px;
+  padding:clamp(22px,5vw,44px) clamp(18px,5vw,44px);
+  box-shadow:0 30px 60px -20px var(--shadow),inset 0 0 40px rgba(255,255,255,.15);
+  text-align:center;animation:float 7s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-8px)}}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.35em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
+h1{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;color:var(--accent);
+  font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.15;margin-bottom:6px}
+.name{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(1.9rem,8vw,3.2rem);line-height:1.1;
+  color:var(--accent2);margin:4px 0 14px;word-break:break-word}
+.name::after{content:"";display:block;width:70px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,transparent,var(--soft),transparent)}
+.message{font-size:clamp(.95rem,3.6vw,1.1rem);line-height:1.65;margin-bottom:14px}
+.ask{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--accent);font-size:clamp(1.05rem,4.2vw,1.35rem);margin-bottom:14px}
+.quote{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(.8rem,3.2vw,.95rem);line-height:1.55;
+  background:var(--pill);border-radius:22px;padding:12px 16px;margin-bottom:24px;border:1px solid var(--card-edge)}
 
-    body {
-      background: linear-gradient(145deg, #fff0f3 0%, #ffdde4 30%, #ffc2d1 100%);
-      font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 12px;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
+.buttons{display:flex;justify-content:center;align-items:center;gap:clamp(14px,4vw,28px);flex-wrap:wrap;min-height:64px}
+.btn{font-family:inherit;font-weight:800;letter-spacing:.14em;text-transform:uppercase;border:0;border-radius:999px;
+  padding:14px clamp(26px,7vw,40px);font-size:clamp(.85rem,3.4vw,1rem);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .25s ease,box-shadow .25s}
+.yes{background:linear-gradient(145deg,var(--accent2),#c1133f);color:var(--btn-text);
+  box-shadow:0 12px 24px -8px #c1133f,0 0 0 4px rgba(255,184,206,.5);transform-origin:center}
+.yes:hover{box-shadow:0 16px 30px -6px #b3002d,0 0 0 6px rgba(255,170,194,.55)}
+.no{background:var(--no-bg);color:var(--accent);border:2px solid var(--soft);white-space:nowrap}
+.no.floating{position:fixed;z-index:60;margin:0;transition:left .28s cubic-bezier(.34,1.56,.64,1),top .28s cubic-bezier(.34,1.56,.64,1),transform .2s}
+.no-slot{display:inline-block}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 
-    /* canvas for floating hearts */
-    #heart-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
+.hint{margin-top:16px;min-height:1.2em;font-size:.85rem;color:var(--accent);font-weight:700;opacity:.85}
+.foot{margin-top:18px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
 
-    /* main card — scaled to fit without scrolling */
-    .love-card {
-      position: relative;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: 48px 20px 48px 20px;
-      box-shadow: 0 25px 50px -12px rgba(200, 40, 80, 0.45),
-                  0 0 0 2px rgba(255, 180, 200, 0.7),
-                  inset 0 0 50px rgba(255, 235, 240, 0.9);
-      padding: 28px 32px;
-      max-width: 640px;
-      width: 90%;
-      text-align: center;
-      transition: transform 0.3s ease;
-      animation: float 6s ease-in-out infinite;
-      overflow: hidden;
-    }
+.success{display:none;margin-top:6px;font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.1rem,4.6vw,1.5rem);
+  line-height:1.5;color:var(--accent);animation:pop .6s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.success small{display:block;font-family:'Nunito',sans-serif;font-size:.8em;margin-top:6px;color:var(--ink)}
+body.yes-state .buttons,body.yes-state .hint,body.yes-state .quote,body.yes-state .ask{display:none}
+body.yes-state .success{display:block}
+body.yes-state .card{animation:none;border-color:var(--accent2)}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
+/* celebration */
+.celebrate{position:fixed;inset:0;z-index:40;pointer-events:none;display:none;overflow:hidden}
+.celebrate.on{display:block}
+.bq{position:absolute;bottom:calc(-4vh + env(safe-area-inset-bottom,0px));width:clamp(120px,30vw,300px);opacity:0}
+.bq svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 24px var(--shadow));animation:sway 4s ease-in-out infinite;transform-origin:50% 100%}
+.bq.l{left:clamp(0px,2vw,40px);animation:rise 1s .1s cubic-bezier(.2,1.3,.4,1) forwards}
+.bq.r{right:clamp(0px,2vw,40px);animation:rise 1s .3s cubic-bezier(.2,1.3,.4,1) forwards}
+.bq.l svg{transform:scaleX(-1);animation-name:swayL}
+@keyframes rise{from{transform:translateY(110%);opacity:0}to{transform:none;opacity:1}}
+@keyframes sway{50%{transform:rotate(3deg)}0%,100%{transform:rotate(-3deg)}}
+@keyframes swayL{50%{transform:scaleX(-1) rotate(3deg)}0%,100%{transform:scaleX(-1) rotate(-3deg)}}
 
-    .love-card:hover {
-      transform: translateY(-6px) scale(1.01);
-    }
-
-    /* decorative heart divider */
-    .heart-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin: 10px 0 14px;
-      color: #e6395f;
-      font-size: 1.1rem;
-      letter-spacing: 8px;
-    }
-
-    .heart-divider span {
-      font-size: 1.6rem;
-      filter: drop-shadow(0 4px 6px #ffb3c6);
-    }
-
-    /* big gesture heading */
-    h1 {
-      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
-      font-weight: 400;
-      color: #b3002d;
-      text-shadow: 3px 3px 0 #ffc0d0, 6px 6px 20px rgba(220, 40, 80, 0.35);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 4px;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-style: italic;
-    }
-
-    /* name highlight */
-    .gf-name {
-      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-      font-weight: 700;
-      background: linear-gradient(135deg, #d6184a, #b3002d, #e63e6b);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 10px 25px rgba(200, 30, 70, 0.45);
-      letter-spacing: -0.02em;
-      display: inline-block;
-      padding: 0 8px;
-      line-height: 1.2;
-      margin: 2px 0 6px;
-    }
-
-    /* love message */
-    .message {
-      font-size: clamp(0.9rem, 2vw, 1.15rem);
-      color: #5e1a2c;
-      line-height: 1.6;
-      margin: 12px 0 14px;
-      padding: 0 8px;
-      font-weight: 400;
-      text-shadow: 0 1px 2px white;
-      background: linear-gradient(45deg, #8f1d3b, #b52a4d);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-style: italic;
-    }
-
-    /* question heading */
-    .question-heading {
-      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
-      color: #b3002d;
-      font-family: 'Georgia', serif;
-      font-style: italic;
-      margin: 10px 0 6px;
-      text-shadow: 0 2px 4px #ffc2d1;
-      letter-spacing: 0.5px;
-    }
-
-    /* quote style */
-    .love-quote {
-      font-family: 'Georgia', serif;
-      font-size: clamp(0.8rem, 1.6vw, 0.95rem);
-      color: #a12345;
-      border-top: 1px solid #ff9eb5;
-      border-bottom: 1px solid #ff9eb5;
-      padding: 10px 0;
-      margin: 12px 0 10px;
-      font-style: italic;
-      background: rgba(255, 235, 240, 0.6);
-      border-radius: 100px;
-      letter-spacing: 0.3px;
-    }
-
-    /* button container */
-    .button-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 22px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-      position: relative;
-    }
-
-    /* base button styles */
-    .date-btn {
-      border: none;
-      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-      font-weight: 600;
-      padding: 14px 36px;
-      border-radius: 50px;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-family: 'Segoe UI', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      position: relative;
-      outline: none;
-    }
-
-    /* Yes button */
-    .yes-btn {
-      background: linear-gradient(145deg, #e6395f, #c1133f);
-      color: white;
-      box-shadow: 0 15px 25px -8px #c1133f, 0 0 0 2px #fff0f5, 0 0 0 5px #ffb8ce;
-    }
-
-    .yes-btn:hover {
-      background: linear-gradient(145deg, #c1133f, #a10d33);
-      transform: scale(1.08);
-      box-shadow: 0 18px 30px -6px #b3002d, 0 0 0 3px #ffffff, 0 0 0 7px #ffaac2;
-    }
-
-    .yes-btn:active {
-      transform: scale(0.97);
-    }
-
-    /* No button — dodge behavior */
-    .no-btn {
-      background: #fff0f3;
-      color: #b3002d;
-      border: 2px solid #ff9eb5;
-      box-shadow: 0 8px 20px -6px #ffb8ce, 0 0 0 2px #fff0f5;
-      transition: transform 0.15s ease, left 0.15s ease, top 0.15s ease;
-      position: relative;
-      z-index: 50;
-      will-change: transform;
-    }
-
-    .no-btn:hover {
-      background: #ffe4eb;
-      border-color: #e6395f;
-    }
-
-    .no-btn.dodging {
-      box-shadow: 0 0 0 3px #ffccd9, 0 10px 25px -8px #e6395f;
-    }
-
-    /* success message — shown after clicking yes */
-    .success-message {
-      display: none;
-      margin-top: 18px;
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 600;
-      color: #b3002d;
-      text-shadow: 0 3px 8px #ffb8ce;
-      background: rgba(255, 240, 245, 0.9);
-      padding: 18px 16px;
-      border-radius: 60px;
-      border: 2px solid #ff9eb5;
-      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      line-height: 1.5;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.6); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* tiny footer */
-    .footer-note {
-      margin-top: 16px;
-      font-size: 0.8rem;
-      color: #c97d95;
-      letter-spacing: 2px;
-      font-weight: 300;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .footer-note i {
-      font-style: normal;
-      font-size: 1rem;
-    }
-
-    /* ====== ROSE BOUQUET OVERLAY (BOTH SIDES) ====== */
-    .bouquet-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 100;
-      display: none;
-      pointer-events: none;
-    }
-
-    .bouquet-overlay.active {
-      display: block;
-    }
-
-    /* Glow pulse behind each bouquet */
-    .bouquet-glow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 55vmin;
-      height: 55vmin;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 180, 200, 0.8) 0%, rgba(255, 100, 140, 0.4) 40%, transparent 70%);
-      animation: glowPulse 1.5s ease-in-out infinite alternate;
-    }
-
-    .bouquet-glow.left {
-      left: 4vw;
-    }
-
-    .bouquet-glow.right {
-      right: 4vw;
-    }
-
-    @keyframes glowPulse {
-      0% { transform: translateY(-50%) scale(0.85); opacity: 0.6; }
-      100% { transform: translateY(-50%) scale(1.15); opacity: 1; }
-    }
-
-    /* Bouquet container — slides in from each side */
-    .bouquet-container {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-    }
-
-    .bouquet-container.left {
-      left: -40vw;
-      animation: bouquetPopLeft 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    .bouquet-container.right {
-      right: -40vw;
-      animation: bouquetPopRight 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    @keyframes bouquetPopLeft {
-      0% {
-        left: -40vw;
-        opacity: 0;
-      }
-      60% {
-        left: 4vw;
-        opacity: 1;
-      }
-      80% {
-        left: 6vw;
-      }
-      100% {
-        left: 5vw;
-        opacity: 1;
-      }
-    }
-
-    @keyframes bouquetPopRight {
-      0% {
-        right: -40vw;
-        opacity: 0;
-      }
-      60% {
-        right: 4vw;
-        opacity: 1;
-      }
-      80% {
-        right: 6vw;
-      }
-      100% {
-        right: 5vw;
-        opacity: 1;
-      }
-    }
-
-    .bouquet-svg {
-      width: min(55vmin, 460px);
-      height: auto;
-      filter: drop-shadow(0 20px 40px rgba(200, 30, 70, 0.5));
-      animation: sway 4s ease-in-out infinite;
-    }
-
-    /* Mirror the left bouquet */
-    .bouquet-container.left .bouquet-svg {
-      transform: scaleX(-1);
-      animation: swayMirrored 4s ease-in-out infinite;
-    }
-
-    @keyframes sway {
-      0%, 100% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
-    }
-
-    @keyframes swayMirrored {
-      0%, 100% { transform: scaleX(-1) rotate(-2deg); }
-      50% { transform: scaleX(-1) rotate(2deg); }
-    }
-
-    /* Sparkles around bouquets */
-    .sparkle {
-      position: absolute;
-      font-size: 2rem;
-      color: #ffccd9;
-      text-shadow: 0 0 10px #ff9eb5, 0 0 20px #e6395f;
-      animation: sparkleFloat 2.5s ease-in-out infinite;
-      z-index: 3;
-    }
-
-    @keyframes sparkleFloat {
-      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
-      50% { transform: translateY(-20px) scale(1.3); opacity: 1; }
-    }
-
-    /* Bouquet success text (centered bottom) */
-    .bouquet-text {
-      position: absolute;
-      bottom: 6vh;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-      font-family: 'Georgia', serif;
-      font-style: italic;
-      font-size: clamp(1.1rem, 2.5vw, 1.7rem);
-      color: #b3002d;
-      text-shadow: 0 3px 10px #ffb8ce, 0 0 20px white;
-      background: rgba(255, 255, 255, 0.85);
-      padding: 10px 28px;
-      border-radius: 50px;
-      border: 2px solid #ff9eb5;
-      animation: textPop 0.8s 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-      white-space: nowrap;
-    }
-
-    @keyframes textPop {
-      0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
-      100% { transform: translateX(-50%) scale(1); opacity: 1; }
-    }
-
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 900px) {
-      .bouquet-svg {
-        width: min(40vmin, 320px);
-      }
-      .bouquet-glow {
-        width: 40vmin;
-        height: 40vmin;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .love-card {
-        padding: 22px 16px;
-        border-radius: 36px 14px 36px 14px;
-        width: 94%;
-      }
-      .heart-divider {
-        letter-spacing: 4px;
-        margin: 6px 0 10px;
-      }
-      .heart-divider span {
-        font-size: 1.3rem;
-      }
-      .date-btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-      }
-      .button-container {
-        gap: 14px;
-      }
-      .love-quote {
-        padding: 8px 4px;
-        margin: 10px 0 8px;
-      }
-      .message {
-        margin: 8px 0 10px;
-      }
-      .bouquet-svg {
-        width: min(32vmin, 240px);
-      }
-      .bouquet-glow {
-        width: 35vmin;
-        height: 35vmin;
-      }
-      .sparkle {
-        font-size: 1.4rem;
-      }
-    }
-
-    @media (max-height: 650px) {
-      .love-card {
-        padding: 18px 24px;
-      }
-      .heart-divider {
-        margin: 4px 0 8px;
-      }
-      h1 {
-        font-size: clamp(1.4rem, 3vw, 2.2rem);
-      }
-      .gf-name {
-        font-size: clamp(1.5rem, 4vw, 2.6rem);
-      }
-      .message {
-        margin: 8px 0 10px;
-        font-size: clamp(0.8rem, 1.8vw, 1rem);
-      }
-      .question-heading {
-        margin: 6px 0 4px;
-        font-size: clamp(0.95rem, 2.4vw, 1.3rem);
-      }
-      .love-quote {
-        padding: 6px 0;
-        margin: 8px 0 6px;
-        font-size: clamp(0.7rem, 1.4vw, 0.85rem);
-      }
-      .date-btn {
-        padding: 10px 28px;
-        font-size: clamp(0.85rem, 1.5vw, 1rem);
-      }
-      .footer-note {
-        margin-top: 10px;
-        font-size: 0.7rem;
-      }
-      .success-message {
-        padding: 12px 12px;
-        font-size: clamp(0.9rem, 2vw, 1.2rem);
-      }
-    }
-  </style>
+@media (max-width:480px){.card{border-radius:28px}.message br{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bq{opacity:1}}
+</style>
 </head>
 <body>
-  <!-- floating hearts canvas -->
-  <canvas id="heart-canvas"></canvas>
+<canvas id="hearts" aria-hidden="true"></canvas>
 
-  <!-- main content card -->
-  <div class="love-card">
-    <div class="heart-divider">
-      <span>❤</span>
-      <span style="font-size: 1.3rem;">♡</span>
-      <span>❤</span>
-    </div>
+<main class="card" id="card">
+  <div class="eyebrow">a little question</div>
+  <h1 id="title">Will you go out with me?</h1>
+  <div class="name" id="name">Roxy Rose Tan</div>
+  <p class="message">Every moment with you feels like magic.<br>You’re my today, my tomorrow, and my forever.</p>
+  <p class="ask">Roxy, will you go on a date with me?</p>
+  <p class="quote">“I’d choose you. In a hundred lifetimes, in a hundred worlds, in any version of reality, I’d find you and I’d choose you.”</p>
 
-    <h1>Will You Go Out With Me</h1>
-    <!-- her name -->
-    <div class="gf-name" id="gfNameDisplay">Roxy Rose Tan</div>
-
-    <div class="message">
-      Every moment with you feels like magic.<br>
-      You are my today, my tomorrow, and my forever.
-    </div>
-
-    <div class="question-heading">Roxy, will you go on a date with me?</div>
-
-    <div class="love-quote">
-      "I'd choose you. In a hundred lifetimes, in a hundred worlds,<br>
-      in any version of reality, I'd find you and I'd choose you."
-    </div>
-
-    <!-- Yes / No buttons -->
-    <div class="button-container" id="buttonContainer">
-      <button class="date-btn yes-btn" id="yesBtn">YES</button>
-      <button class="date-btn no-btn" id="noBtn">NO</button>
-    </div>
-
-    <!-- success message (hidden initially) -->
-    <div class="success-message" id="successMessage">
-      YES! You just made me the happiest person alive!<br>
-      <span style="font-size: 0.9em;">I can't wait for our date, Roxy.</span>
-    </div>
-
-    <div class="footer-note">
-      <i>❤</i> made with love ni duduy <i>❤</i>
-    </div>
+  <div class="buttons" id="buttons">
+    <button class="btn yes" id="yes" type="button">Yes</button>
+    <span class="no-slot" id="slot"><button class="btn no" id="no" type="button">No</button></span>
   </div>
+  <p class="hint" id="hint" aria-live="polite"></p>
 
-  <!-- Rose Bouquet Overlay (Both Sides) -->
-  <div class="bouquet-overlay" id="bouquetOverlay">
-    <!-- Left glow -->
-    <div class="bouquet-glow left"></div>
-    <!-- Right glow -->
-    <div class="bouquet-glow right"></div>
+  <div class="success" id="success">Yes! You just made me the happiest person alive 💖<small>I can’t wait for our date, Roxy.</small></div>
+  <div class="foot">♥ made with love ni duduy ♥</div>
+</main>
 
-    <!-- Left Bouquet -->
-    <div class="bouquet-container left">
-      <svg class="bouquet-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Wrapping paper -->
-        <path d="M120 320 Q100 420 80 480 Q200 500 320 480 Q300 420 280 320 Z" 
-              fill="#fff0f3" stroke="#ff9eb5" stroke-width="2"/>
-        <path d="M130 330 Q120 400 110 460" stroke="#ffb8ce" stroke-width="1.5" fill="none"/>
-        <path d="M270 330 Q280 400 290 460" stroke="#ffb8ce" stroke-width="1.5" fill="none"/>
-        <path d="M90 340 L310 340" stroke="#ff9eb5" stroke-width="2.5"/>
-        <!-- Ribbon -->
-        <path d="M150 340 Q200 370 250 340" stroke="#e6395f" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q200 420 200 470" stroke="#e6395f" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q180 410 160 440" stroke="#e6395f" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q220 410 240 440" stroke="#e6395f" stroke-width="5" fill="none" stroke-linecap="round"/>
-        
-        <!-- Stems -->
-        <g stroke="#2d7a3e" stroke-width="4" fill="none" stroke-linecap="round">
-          <path d="M200 340 Q200 260 200 160"/>
-          <path d="M170 340 Q150 280 130 200"/>
-          <path d="M230 340 Q250 280 270 200"/>
-          <path d="M155 345 Q120 300 90 250"/>
-          <path d="M245 345 Q280 300 310 250"/>
-          <path d="M185 345 Q160 290 145 230"/>
-          <path d="M215 345 Q240 290 255 230"/>
-        </g>
+<div class="celebrate" id="celebrate" aria-hidden="true">
+  <div class="bq l"><svg viewBox="0 0 200 270"><use href="#bouquet"/></svg></div>
+  <div class="bq r"><svg viewBox="0 0 200 270"><use href="#bouquet"/></svg></div>
+</div>
 
-        <!-- Leaves -->
-        <g fill="#3a9a4f" opacity="0.85">
-          <ellipse cx="175" cy="280" rx="18" ry="8" transform="rotate(-30 175 280)"/>
-          <ellipse cx="225" cy="280" rx="18" ry="8" transform="rotate(30 225 280)"/>
-          <ellipse cx="140" cy="250" rx="16" ry="7" transform="rotate(-40 140 250)"/>
-          <ellipse cx="260" cy="250" rx="16" ry="7" transform="rotate(40 260 250)"/>
-          <ellipse cx="160" cy="310" rx="14" ry="6" transform="rotate(-20 160 310)"/>
-          <ellipse cx="240" cy="310" rx="14" ry="6" transform="rotate(20 240 310)"/>
-          <ellipse cx="200" cy="230" rx="15" ry="7" transform="rotate(0 200 230)"/>
-        </g>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rose" viewBox="-30 -30 60 60">
+      <circle r="28" fill="#c1133f"/><circle r="22" fill="#e6395f"/><circle r="16" fill="#ff4d6d"/>
+      <path d="M0-10C10-10 12 2 2 4C-8 6-10-6-2-8C4-9 6-2 1-1" fill="none" stroke="#ffb3c6" stroke-width="2.2" stroke-linecap="round"/>
+      <circle r="3" fill="#fff0f3"/>
+    </symbol>
+    <symbol id="bouquet" viewBox="0 0 200 270">
+      <g stroke="#2d7a3e" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M100 190V70M100 190Q70 150 55 100M100 190Q130 150 145 100M100 190Q50 170 30 140M100 190Q150 170 170 140"/>
+      </g>
+      <g fill="#3a9a4f">
+        <ellipse cx="78" cy="150" rx="16" ry="7" transform="rotate(-35 78 150)"/>
+        <ellipse cx="122" cy="150" rx="16" ry="7" transform="rotate(35 122 150)"/>
+        <ellipse cx="62" cy="172" rx="14" ry="6" transform="rotate(-20 62 172)"/>
+        <ellipse cx="138" cy="172" rx="14" ry="6" transform="rotate(20 138 172)"/>
+      </g>
+      <path d="M38 165L162 165L122 262L78 262Z" fill="#fff0f3" stroke="#ff9eb5" stroke-width="2"/>
+      <path d="M100 165V262M70 165L90 262M130 165L110 262" stroke="#ffc2d1" stroke-width="1.5"/>
+      <path d="M100 190C78 172 74 204 100 190C126 204 122 172 100 190Z" fill="#e6395f"/>
+      <use href="#rose" x="70" y="38" width="60" height="60"/>
+      <use href="#rose" x="28" y="76" width="54" height="54"/>
+      <use href="#rose" x="118" y="76" width="54" height="54"/>
+      <use href="#rose" x="2" y="116" width="46" height="46"/>
+      <use href="#rose" x="152" y="116" width="46" height="46"/>
+    </symbol>
+  </defs>
+</svg>
 
-        <!-- ROSES -->
-        <g>
-          <circle cx="200" cy="140" r="38" fill="#e6395f"/>
-          <circle cx="200" cy="140" r="30" fill="#ff4d6d"/>
-          <circle cx="200" cy="140" r="22" fill="#ff7a95"/>
-          <circle cx="200" cy="140" r="13" fill="#ffb3c6"/>
-          <circle cx="200" cy="140" r="5" fill="#fff0f3"/>
-          <path d="M200 105 Q215 120 200 135 Q185 120 200 105" fill="#c1133f" opacity="0.5"/>
-        </g>
-        <g>
-          <circle cx="125" cy="185" r="32" fill="#d6184a"/>
-          <circle cx="125" cy="185" r="25" fill="#e6395f"/>
-          <circle cx="125" cy="185" r="18" fill="#ff4d6d"/>
-          <circle cx="125" cy="185" r="10" fill="#ffb3c6"/>
-          <circle cx="125" cy="185" r="4" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="275" cy="185" r="32" fill="#d6184a"/>
-          <circle cx="275" cy="185" r="25" fill="#e6395f"/>
-          <circle cx="275" cy="185" r="18" fill="#ff4d6d"/>
-          <circle cx="275" cy="185" r="10" fill="#ffb3c6"/>
-          <circle cx="275" cy="185" r="4" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="85" cy="240" r="28" fill="#b3002d"/>
-          <circle cx="85" cy="240" r="21" fill="#d6184a"/>
-          <circle cx="85" cy="240" r="14" fill="#e6395f"/>
-          <circle cx="85" cy="240" r="8" fill="#ffb3c6"/>
-          <circle cx="85" cy="240" r="3" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="315" cy="240" r="28" fill="#b3002d"/>
-          <circle cx="315" cy="240" r="21" fill="#d6184a"/>
-          <circle cx="315" cy="240" r="14" fill="#e6395f"/>
-          <circle cx="315" cy="240" r="8" fill="#ffb3c6"/>
-          <circle cx="315" cy="240" r="3" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="155" cy="225" r="24" fill="#c1133f"/>
-          <circle cx="155" cy="225" r="18" fill="#e6395f"/>
-          <circle cx="155" cy="225" r="12" fill="#ff4d6d"/>
-          <circle cx="155" cy="225" r="6" fill="#ffb3c6"/>
-          <circle cx="155" cy="225" r="2" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="245" cy="225" r="24" fill="#c1133f"/>
-          <circle cx="245" cy="225" r="18" fill="#e6395f"/>
-          <circle cx="245" cy="225" r="12" fill="#ff4d6d"/>
-          <circle cx="245" cy="225" r="6" fill="#ffb3c6"/>
-          <circle cx="245" cy="225" r="2" fill="#fff0f3"/>
-        </g>
-        <circle cx="115" cy="160" r="10" fill="#ff7a95"/>
-        <circle cx="285" cy="160" r="10" fill="#ff7a95"/>
-        <circle cx="200" cy="115" r="8" fill="#ffb3c6"/>
-        <circle cx="105" cy="205" r="7" fill="#ffb3c6"/>
-        <circle cx="295" cy="205" r="7" fill="#ffb3c6"/>
-      </svg>
-    </div>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const yes=$('yes'), no=$('no'), slot=$('slot'), hint=$('hint'), card=$('card');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <!-- Right Bouquet -->
-    <div class="bouquet-container right">
-      <svg class="bouquet-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Wrapping paper -->
-        <path d="M120 320 Q100 420 80 480 Q200 500 320 480 Q300 420 280 320 Z" 
-              fill="#fff0f3" stroke="#ff9eb5" stroke-width="2"/>
-        <path d="M130 330 Q120 400 110 460" stroke="#ffb8ce" stroke-width="1.5" fill="none"/>
-        <path d="M270 330 Q280 400 290 460" stroke="#ffb8ce" stroke-width="1.5" fill="none"/>
-        <path d="M90 340 L310 340" stroke="#ff9eb5" stroke-width="2.5"/>
-        <!-- Ribbon -->
-        <path d="M150 340 Q200 370 250 340" stroke="#e6395f" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q200 420 200 470" stroke="#e6395f" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q180 410 160 440" stroke="#e6395f" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <path d="M200 370 Q220 410 240 440" stroke="#e6395f" stroke-width="5" fill="none" stroke-linecap="round"/>
-        
-        <!-- Stems -->
-        <g stroke="#2d7a3e" stroke-width="4" fill="none" stroke-linecap="round">
-          <path d="M200 340 Q200 260 200 160"/>
-          <path d="M170 340 Q150 280 130 200"/>
-          <path d="M230 340 Q250 280 270 200"/>
-          <path d="M155 345 Q120 300 90 250"/>
-          <path d="M245 345 Q280 300 310 250"/>
-          <path d="M185 345 Q160 290 145 230"/>
-          <path d="M215 345 Q240 290 255 230"/>
-        </g>
-
-        <!-- Leaves -->
-        <g fill="#3a9a4f" opacity="0.85">
-          <ellipse cx="175" cy="280" rx="18" ry="8" transform="rotate(-30 175 280)"/>
-          <ellipse cx="225" cy="280" rx="18" ry="8" transform="rotate(30 225 280)"/>
-          <ellipse cx="140" cy="250" rx="16" ry="7" transform="rotate(-40 140 250)"/>
-          <ellipse cx="260" cy="250" rx="16" ry="7" transform="rotate(40 260 250)"/>
-          <ellipse cx="160" cy="310" rx="14" ry="6" transform="rotate(-20 160 310)"/>
-          <ellipse cx="240" cy="310" rx="14" ry="6" transform="rotate(20 240 310)"/>
-          <ellipse cx="200" cy="230" rx="15" ry="7" transform="rotate(0 200 230)"/>
-        </g>
-
-        <!-- ROSES -->
-        <g>
-          <circle cx="200" cy="140" r="38" fill="#e6395f"/>
-          <circle cx="200" cy="140" r="30" fill="#ff4d6d"/>
-          <circle cx="200" cy="140" r="22" fill="#ff7a95"/>
-          <circle cx="200" cy="140" r="13" fill="#ffb3c6"/>
-          <circle cx="200" cy="140" r="5" fill="#fff0f3"/>
-          <path d="M200 105 Q215 120 200 135 Q185 120 200 105" fill="#c1133f" opacity="0.5"/>
-        </g>
-        <g>
-          <circle cx="125" cy="185" r="32" fill="#d6184a"/>
-          <circle cx="125" cy="185" r="25" fill="#e6395f"/>
-          <circle cx="125" cy="185" r="18" fill="#ff4d6d"/>
-          <circle cx="125" cy="185" r="10" fill="#ffb3c6"/>
-          <circle cx="125" cy="185" r="4" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="275" cy="185" r="32" fill="#d6184a"/>
-          <circle cx="275" cy="185" r="25" fill="#e6395f"/>
-          <circle cx="275" cy="185" r="18" fill="#ff4d6d"/>
-          <circle cx="275" cy="185" r="10" fill="#ffb3c6"/>
-          <circle cx="275" cy="185" r="4" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="85" cy="240" r="28" fill="#b3002d"/>
-          <circle cx="85" cy="240" r="21" fill="#d6184a"/>
-          <circle cx="85" cy="240" r="14" fill="#e6395f"/>
-          <circle cx="85" cy="240" r="8" fill="#ffb3c6"/>
-          <circle cx="85" cy="240" r="3" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="315" cy="240" r="28" fill="#b3002d"/>
-          <circle cx="315" cy="240" r="21" fill="#d6184a"/>
-          <circle cx="315" cy="240" r="14" fill="#e6395f"/>
-          <circle cx="315" cy="240" r="8" fill="#ffb3c6"/>
-          <circle cx="315" cy="240" r="3" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="155" cy="225" r="24" fill="#c1133f"/>
-          <circle cx="155" cy="225" r="18" fill="#e6395f"/>
-          <circle cx="155" cy="225" r="12" fill="#ff4d6d"/>
-          <circle cx="155" cy="225" r="6" fill="#ffb3c6"/>
-          <circle cx="155" cy="225" r="2" fill="#fff0f3"/>
-        </g>
-        <g>
-          <circle cx="245" cy="225" r="24" fill="#c1133f"/>
-          <circle cx="245" cy="225" r="18" fill="#e6395f"/>
-          <circle cx="245" cy="225" r="12" fill="#ff4d6d"/>
-          <circle cx="245" cy="225" r="6" fill="#ffb3c6"/>
-          <circle cx="245" cy="225" r="2" fill="#fff0f3"/>
-        </g>
-        <circle cx="115" cy="160" r="10" fill="#ff7a95"/>
-        <circle cx="285" cy="160" r="10" fill="#ff7a95"/>
-        <circle cx="200" cy="115" r="8" fill="#ffb3c6"/>
-        <circle cx="105" cy="205" r="7" fill="#ffb3c6"/>
-        <circle cx="295" cy="205" r="7" fill="#ffb3c6"/>
-      </svg>
-    </div>
-
-    <!-- Sparkles around bouquets -->
-    <span class="sparkle" style="top: 18%; left: 8%; animation-delay: 0.2s;">✦</span>
-    <span class="sparkle" style="top: 30%; left: 16%; animation-delay: 0.5s;">✦</span>
-    <span class="sparkle" style="top: 65%; left: 10%; animation-delay: 0.8s;">✦</span>
-    <span class="sparkle" style="top: 50%; left: 4%; animation-delay: 1.1s;">✦</span>
-    <span class="sparkle" style="top: 40%; left: 18%; animation-delay: 0.4s;">✦</span>
-    <span class="sparkle" style="top: 75%; left: 14%; animation-delay: 0.9s;">✦</span>
-    <span class="sparkle" style="top: 18%; right: 8%; animation-delay: 0.3s;">✦</span>
-    <span class="sparkle" style="top: 30%; right: 16%; animation-delay: 0.6s;">✦</span>
-    <span class="sparkle" style="top: 65%; right: 10%; animation-delay: 1.0s;">✦</span>
-    <span class="sparkle" style="top: 50%; right: 4%; animation-delay: 0.7s;">✦</span>
-    <span class="sparkle" style="top: 40%; right: 18%; animation-delay: 0.2s;">✦</span>
-    <span class="sparkle" style="top: 75%; right: 14%; animation-delay: 1.2s;">✦</span>
-
-    <div class="bouquet-text">For you, Roxy Rose Tan</div>
-  </div>
-
-  <script>
-    // ====== FLOATING HEARTS BACKGROUND ======
-    (function() {
-      const canvas = document.getElementById('heart-canvas');
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let hearts = [];
-
-      class HeartParticle {
-        constructor() {
-          this.reset();
-        }
-        reset() {
-          this.x = Math.random() * width;
-          this.y = height + Math.random() * 100;
-          this.size = Math.random() * 18 + 10;
-          this.speedY = Math.random() * 0.8 + 0.4;
-          this.speedX = (Math.random() - 0.5) * 0.5;
-          this.opacity = Math.random() * 0.4 + 0.2;
-          this.rotation = (Math.random() - 0.5) * 0.4;
-          this.rotSpeed = (Math.random() - 0.5) * 0.01;
-          this.scale = Math.random() * 0.4 + 0.6;
-        }
-        update() {
-          this.y -= this.speedY;
-          this.x += this.speedX + Math.sin(this.y * 0.01) * 0.15;
-          this.rotation += this.rotSpeed;
-          if (this.y < -40 || this.x < -40 || this.x > width + 40) {
-            this.reset();
-            this.y = height + 20;
-          }
-        }
-        draw() {
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.rotate(this.rotation);
-          ctx.scale(this.scale, this.scale);
-          ctx.beginPath();
-          const s = this.size * 0.8;
-          ctx.moveTo(0, s * 0.3);
-          ctx.bezierCurveTo(-s * 0.5, -s * 0.3, -s, s * 0.1, 0, s * 0.9);
-          ctx.bezierCurveTo(s, s * 0.1, s * 0.5, -s * 0.3, 0, s * 0.3);
-          ctx.fillStyle = `rgba(230, 57, 95, ${this.opacity})`;
-          ctx.shadowColor = 'rgba(200, 30, 70, 0.6)';
-          ctx.shadowBlur = 14;
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      function initHearts() {
-        const count = Math.min(60, Math.floor(window.innerWidth / 18));
-        hearts = [];
-        for (let i = 0; i < count; i++) {
-          const heart = new HeartParticle();
-          heart.y = height - Math.random() * height * 0.8;
-          hearts.push(heart);
-        }
-      }
-
-      function resizeCanvas() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-        initHearts();
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-        hearts.forEach(heart => {
-          heart.update();
-          heart.draw();
-        });
-        requestAnimationFrame(animate);
-      }
-
-      window.addEventListener('resize', () => {
-        resizeCanvas();
-      });
-
-      resizeCanvas();
-      animate();
-    })();
-
-    // ====== DATE PROPOSAL LOGIC ======
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const successMessage = document.getElementById('successMessage');
-    const buttonContainer = document.getElementById('buttonContainer');
-    const gfNameSpan = document.getElementById('gfNameDisplay');
-    const bouquetOverlay = document.getElementById('bouquetOverlay');
-
-    // Her name
-    const herName = "Roxy Rose Tan";
-    gfNameSpan.textContent = herName;
-
-    // --- Dodge logic for the "No" button ---
-    const DODGE_DISTANCE = 120;
-
-    let noBtnOffsetX = 0;
-    let noBtnOffsetY = 0;
-
-    function moveNoButton(mouseX, mouseY) {
-      const rect = noBtn.getBoundingClientRect();
-      const btnCenterX = rect.left + rect.width / 2;
-      const btnCenterY = rect.top + rect.height / 2;
-
-      const distX = mouseX - btnCenterX;
-      const distY = mouseY - btnCenterY;
-      const distance = Math.sqrt(distX * distX + distY * distY);
-
-      if (distance < DODGE_DISTANCE) {
-        let pushX = 0, pushY = 0;
-        if (distance === 0) {
-          pushX = 1;
-          pushY = -1;
-        } else {
-          pushX = -distX / distance;
-          pushY = -distY / distance;
-        }
-
-        const pushStrength = 150;
-        const newOffsetX = pushX * pushStrength;
-        const newOffsetY = pushY * pushStrength;
-
-        noBtnOffsetX = noBtnOffsetX * 0.6 + newOffsetX * 0.4;
-        noBtnOffsetY = noBtnOffsetY * 0.6 + newOffsetY * 0.4;
-
-        const maxOffset = 280;
-        noBtnOffsetX = Math.max(-maxOffset, Math.min(maxOffset, noBtnOffsetX));
-        noBtnOffsetY = Math.max(-maxOffset, Math.min(maxOffset, noBtnOffsetY));
-
-        noBtn.style.transform = `translate(${noBtnOffsetX}px, ${noBtnOffsetY}px)`;
-        noBtn.classList.add('dodging');
-      } else {
-        if (Math.abs(noBtnOffsetX) > 0.5 || Math.abs(noBtnOffsetY) > 0.5) {
-          noBtnOffsetX *= 0.85;
-          noBtnOffsetY *= 0.85;
-          noBtn.style.transform = `translate(${noBtnOffsetX}px, ${noBtnOffsetY}px)`;
-        } else {
-          noBtnOffsetX = 0;
-          noBtnOffsetY = 0;
-          noBtn.style.transform = 'translate(0, 0)';
-          noBtn.classList.remove('dodging');
-        }
-      }
+  /* ---------- floating hearts + confetti on one canvas ---------- */
+  const cv=$('hearts'), ctx=cv.getContext('2d');
+  let W,H,dpr,hearts=[],burst=[];
+  function heartPath(s){
+    ctx.beginPath();ctx.moveTo(0,s*.3);
+    ctx.bezierCurveTo(-s*.5,-s*.3,-s,s*.1,0,s*.9);
+    ctx.bezierCurveTo(s,s*.1,s*.5,-s*.3,0,s*.3);
+  }
+  function spawn(initial){
+    return {x:Math.random()*W,y:initial?Math.random()*H:H+30,s:Math.random()*12+8,
+      vy:Math.random()*.6+.3,vx:(Math.random()-.5)*.4,a:Math.random()*.35+.15,r:(Math.random()-.5)*.5};
+  }
+  function resize(){
+    dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+    cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    hearts=Array.from({length:Math.min(36,Math.floor(W/20))},()=>spawn(true));
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#e6395f';
+    for(const h of hearts){
+      h.y-=h.vy;h.x+=h.vx+Math.sin(h.y*.02)*.2;
+      if(h.y<-30)Object.assign(h,spawn(false));
+      ctx.save();ctx.translate(h.x,h.y);ctx.rotate(h.r);ctx.globalAlpha=h.a;heartPath(h.s);ctx.fill();ctx.restore();
     }
+    const cols=['#ff4d6d','#ff8fab','#ffb3c6','#e6395f','#fff'];
+    burst=burst.filter(p=>p.life>0);
+    for(const p of burst){
+      p.vy+=.12;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.life--;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=Math.min(1,p.life/30);
+      ctx.fillStyle=cols[p.c];heartPath(p.s);ctx.fill();ctx.restore();
+    }
+    requestAnimationFrame(frame);
+  }
+  addEventListener('resize',()=>{resize();resetNo();});
+  resize();if(!reduce)frame();else{frame();}
 
-    document.addEventListener('mousemove', (e) => {
-      moveNoButton(e.clientX, e.clientY);
-    });
+  /* ---------- the dodging No button ---------- */
+  const labels=['No','Are you sure?','Think again 🥺','Pretty please?','Last chance!','Hehe, nope','Just say yes 💗'];
+  let tries=0,floating=false,last={x:-999,y:-999};
 
-    document.addEventListener('touchmove', (e) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        moveNoButton(touch.clientX, touch.clientY);
-      }
-    }, { passive: true });
+  function rects(){return {yes:yes.getBoundingClientRect(),card:card.getBoundingClientRect()};}
 
-    noBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      noBtnOffsetX = (Math.random() - 0.5) * 380;
-      noBtnOffsetY = (Math.random() - 0.5) * 380;
-      noBtn.style.transform = `translate(${noBtnOffsetX}px, ${noBtnOffsetY}px)`;
-      noBtn.classList.add('dodging');
-      setTimeout(() => {
-        noBtnOffsetX *= 0.5;
-        noBtnOffsetY *= 0.5;
-        noBtn.style.transform = `translate(${noBtnOffsetX}px, ${noBtnOffsetY}px)`;
-      }, 200);
-    });
+  function floatNo(){
+    if(floating)return;
+    const r=no.getBoundingClientRect();
+    slot.style.width=r.width+'px';slot.style.height=r.height+'px';   // keep layout stable
+    document.body.appendChild(no);                                   // escape the card's transform
+    no.classList.add('floating');
+    no.style.left=r.left+'px';no.style.top=r.top+'px';
+    floating=true;
+  }
 
-    // --- YES button logic ---
-    yesBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+  function dodge(){
+    floatNo();
+    tries++;
+    no.textContent=labels[Math.min(tries,labels.length-1)];
+    const pad=14, sa=parseFloat(getComputedStyle(document.documentElement).paddingTop)||0;
+    const b=no.getBoundingClientRect(), w=b.width, h=b.height, y=yes.getBoundingClientRect();
+    const minX=pad, maxX=innerWidth-w-pad, minY=pad+sa, maxY=innerHeight-h-pad-(parseFloat(getComputedStyle(document.documentElement).paddingBottom)||0);
+    let x,yy,ok=false;
+    for(let i=0;i<40&&!ok;i++){
+      x=minX+Math.random()*Math.max(0,maxX-minX);
+      yy=minY+Math.random()*Math.max(0,maxY-minY);
+      const farFromLast=Math.hypot(x-last.x,yy-last.y)>Math.min(160,innerWidth*.3);
+      const hitsYes=x<y.right+16&&x+w>y.left-16&&yy<y.bottom+16&&yy+h>y.top-16;
+      ok=farFromLast&&!hitsYes;
+    }
+    last={x,y:yy};
+    no.style.left=x+'px';no.style.top=yy+'px';
 
-      // Hide buttons, show success message
-      buttonContainer.style.display = 'none';
-      successMessage.style.display = 'block';
+    // yes button grows, no shrinks a little
+    yes.style.transform=`scale(${Math.min(1+tries*.07,1.5)})`;
+    no.style.transform=`scale(${Math.max(1-tries*.04,.75)})`;
+    hint.textContent=tries>=3?'The yes button is looking pretty good right now…':'';
+    if(navigator.vibrate)navigator.vibrate(15);
+  }
 
-      gfNameSpan.textContent = "She said YES!";
-      document.querySelector('h1').textContent = 'She Said YES!';
+  function resetNo(){
+    if(!floating)return;
+    slot.appendChild(no);no.classList.remove('floating');no.style.left=no.style.top='';
+    slot.style.width=slot.style.height='';floating=false;last={x:-999,y:-999};
+  }
 
-      // Card celebration styling
-      const card = document.querySelector('.love-card');
-      card.style.transition = 'background 0.3s, box-shadow 0.3s, transform 0.2s';
-      card.style.background = 'rgba(255, 220, 230, 0.95)';
-      card.style.boxShadow = '0 25px 60px -8px #e6395f, 0 0 0 3px #ffb8ce, inset 0 0 60px #ffe4eb';
-      card.style.transform = 'scale(1.02)';
+  // touch + mouse + pen: dodge the instant a pointer lands
+  no.addEventListener('pointerdown',e=>{e.preventDefault();dodge();});
+  // keyboard / assistive tech activation
+  no.addEventListener('click',e=>{e.preventDefault();dodge();});
+  // mouse: run away when the cursor gets close
+  addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse')return;
+    const b=no.getBoundingClientRect();
+    const d=Math.hypot(e.clientX-(b.left+b.width/2),e.clientY-(b.top+b.height/2));
+    if(d<Math.max(90,b.width*.9))dodge();
+  });
 
-      // Show rose bouquet overlay (both sides slide in)
-      setTimeout(() => {
-        bouquetOverlay.classList.add('active');
-      }, 400);
-    });
-
-    noBtn.addEventListener('mousedown', (e) => e.preventDefault());
-
-    window.addEventListener('resize', () => {
-      noBtnOffsetX = 0;
-      noBtnOffsetY = 0;
-      noBtn.style.transform = 'translate(0, 0)';
-      noBtn.classList.remove('dodging');
-    });
-  </script>
+  /* ---------- YES ---------- */
+  yes.addEventListener('click',()=>{
+    document.body.classList.add('yes-state');
+    no.style.display='none';
+    $('title').textContent='She said YES!';
+    $('name').textContent='Roxy Rose Tan 💍'.replace(' 💍','');
+    for(let i=0;i<90;i++){
+      burst.push({x:W/2,y:H*.45,vx:(Math.random()-.5)*12,vy:-Math.random()*10-2,s:Math.random()*10+6,
+        rot:0,vr:(Math.random()-.5)*.2,life:90+Math.random()*60|0,c:Math.random()*5|0});
+    }
+    setTimeout(()=>$('celebrate').classList.add('on'),250);
+  });
+})();
+</script>
 </body>
 </html>
