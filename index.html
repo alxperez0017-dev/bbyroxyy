@@ -115,7 +115,7 @@ body.yes-state .card{animation:none;border-color:var(--accent2)}
   </div>
   <p class="hint" id="hint" aria-live="polite"></p>
 
-  <div class="success" id="success">Yes! You just made me the happiest person alive 💖<small>I can’t wait for our date, Roxy.</small></div>
+  <div class="success" id="success">Yes! You just made me the happiest person alive<small>I can’t wait for our date, Roxy.</small></div>
   <div class="foot">♥ made with love ni duduy ♥</div>
 </main>
 
@@ -197,7 +197,7 @@ body.yes-state .card{animation:none;border-color:var(--accent2)}
   resize();if(!reduce)frame();else{frame();}
 
   /* ---------- the dodging No button ---------- */
-  const labels=['No','Are you sure?','Think again 🥺','Pretty please?','Last chance!','Hehe, nope','Just say yes 💗'];
+  const labels=['Pretty please?','Sige na, please 🥺','I’m begging you','Please naman…','I’ll wait forever','Pagbigyan mo na ako','bby please?','bbywabwab','poookiee','cutiepatotie','mahal','asawa q'];
   let tries=0,floating=false,last={x:-999,y:-999};
 
   function rects(){return {yes:yes.getBoundingClientRect(),card:card.getBoundingClientRect()};}
@@ -215,7 +215,7 @@ body.yes-state .card{animation:none;border-color:var(--accent2)}
   function dodge(){
     floatNo();
     tries++;
-    no.textContent=labels[Math.min(tries,labels.length-1)];
+    no.textContent=labels[(tries-1)%labels.length];
     const pad=14, sa=parseFloat(getComputedStyle(document.documentElement).paddingTop)||0;
     const b=no.getBoundingClientRect(), w=b.width, h=b.height, y=yes.getBoundingClientRect();
     const minX=pad, maxX=innerWidth-w-pad, minY=pad+sa, maxY=innerHeight-h-pad-(parseFloat(getComputedStyle(document.documentElement).paddingBottom)||0);
@@ -260,7 +260,7 @@ body.yes-state .card{animation:none;border-color:var(--accent2)}
     document.body.classList.add('yes-state');
     no.style.display='none';
     $('title').textContent='She said YES!';
-    $('name').textContent='Roxy Rose Tan 💍'.replace(' 💍','');
+    $('name').textContent='Roxy Rose Tan';
     for(let i=0;i<90;i++){
       burst.push({x:W/2,y:H*.45,vx:(Math.random()-.5)*12,vy:-Math.random()*10-2,s:Math.random()*10+6,
         rot:0,vr:(Math.random()-.5)*.2,life:90+Math.random()*60|0,c:Math.random()*5|0});
